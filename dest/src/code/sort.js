@@ -57,6 +57,15 @@ function merge(list1, list2) {
         return list.concat(merge(list1, list2));
     }
 }
+function sort4(list) {
+    if (list.length != 0 && list.length != 1) {
+        let n = Math.floor(list.length / 2);
+        let list1 = list.slice(0, n);
+        let list2 = list.slice(n);
+        list = merge(sort4(list1), sort4(list2));
+    }
+    return list;
+}
 const list = [2, 5, 6, 4, 1, 7, 3];
 console.log(sort1(list));
-export { sort1, sort2, sort3, merge };
+export { sort1, sort2, sort3, merge, sort4 };
