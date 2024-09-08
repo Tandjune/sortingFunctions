@@ -38,6 +38,25 @@ function sort3(list) {
     }
     return list;
 }
+function merge(list1, list2) {
+    let list = [];
+    if (list1.length == 0) {
+        return list2;
+    }
+    else if (list2.length == 0) {
+        return list1;
+    }
+    else if (list1[0] < list2[0]) {
+        list.push(list1[0]);
+        list1 = list1.slice(1);
+        return list.concat(merge(list1, list2));
+    }
+    else {
+        list.push(list2[0]);
+        list2 = list2.slice(1);
+        return list.concat(merge(list1, list2));
+    }
+}
 const list = [2, 5, 6, 4, 1, 7, 3];
 console.log(sort1(list));
-export { sort1, sort2, sort3 };
+export { sort1, sort2, sort3, merge };
