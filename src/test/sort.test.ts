@@ -1,4 +1,4 @@
-import { sort1, sort2 } from "../code/sort";
+import { sort1, sort2, sort3 } from "../code/sort";
 
 const cases = [
   {
@@ -50,5 +50,9 @@ describe("Tests of sorting a liste of numbers", () => {
 
   it.each(cases)("Test case $id for sort2", ({ input, output }) => {
     expect(sort2(input)).toEqual(output);
+  });
+
+  it.each(cases)("Test case $id for sort3", ({ input, output }) => {
+    expect(sort3(input)).toEqual(output);
   });
 });
