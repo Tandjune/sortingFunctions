@@ -67,7 +67,41 @@ function sort4(list: number[]): number[] {
   return list;
 }
 
-const list = [2, 5, 6, 4, 1, 7, 3];
-console.log(sort1(list));
+function sort5(
+  list: number[],
+  start: number = 0,
+  end: number = list.length - 1
+): number[] {
+  if (end - start < 1) {
+    return list;
+  }
+  if (end - start == 1) {
+    if (list[0] < list[1]) {
+      return list;
+    }
+    let tmp = list[0];
+    list[0] = list[1];
+    list[1] = tmp;
+    return list;
+  }
+  var tmp = start + Math.ceil((end - start) / 2);
+  var pivot = list[tmp];
+  list[tmp] = list[end];
+  list[end] = pivot;
+  var j = end;
+  for (let i = start; i < j; i++) {
+    if (list[i] >= pivot) {
+      let tmp2 = list[i];
+      list[i] = list[j];
+      list[j] = tmp2;
+      j--;
+      tmp = i;
+    }
+  }
+  sort5(list, 0, tmp);
+  sort5(list, tmp, end);
+  return list;
+}
 
-export { sort1, sort2, sort3, merge, sort4 };
+
+export { sort1, sort2, sort3, merge, sort4, sort5 };
