@@ -1,10 +1,10 @@
 function sort1(list: number[]): number[] {
-  for (let i = 0; i < list.length - 1; i++) {
-    for (let j = i + 1; j < list.length; j++) {
-      if (list[i] > list[j]) {
-        const tmp = list[i];
-        list[i] = list[j];
-        list[j] = tmp;
+  for (let i = 1; i < list.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (list[j-1] > list[j]) {
+        const tmp2 = list[j-1];
+        list[j-1] = list[j];
+        list[j] = tmp2;
       }
     }
   }
